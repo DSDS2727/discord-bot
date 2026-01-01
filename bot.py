@@ -154,18 +154,14 @@ async def voice_stats(interaction: discord.Interaction):
 @app_commands.describe(user="환영할 유저를 선택하세요")
 async def welcome_custom(interaction: discord.Interaction, user: discord.Member):
     if not interaction.user.guild_permissions.administrator: return
-    # 수정 완료: 명령어 사용자가 아닌, '선택한 유저(user)'를 태그합니다.
+    # 선택한 유저(user)를 정확히 태그하여 전송
     await interaction.response.send_message(f"환영해요 {user.mention} 새로 오신분께 다들 인사 부탁드려요!!")
 
 # ==========================================================
 # ✅ [5. 이벤트 핸들러]
 # ==========================================================
 
-@bot.event
-async def on_member_join(member):
-    ch = member.guild.get_channel(WELCOME_CHANNEL_ID)
-    if ch:
-        await ch.send(f"환영해요 {member.mention} 새로 오신분께 다들 인사 부탁드려요!!")
+# 1. 자동 환영 기능 삭제됨 (수동으로만 가능)
 
 @bot.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
