@@ -154,7 +154,7 @@ async def voice_stats(interaction: discord.Interaction):
 @app_commands.describe(user="환영할 유저를 선택하세요")
 async def welcome_custom(interaction: discord.Interaction, user: discord.Member):
     if not interaction.user.guild_permissions.administrator: return
-    # 수정됨: 선택한 유저(user)를 태그하여 메시지 전송
+    # 수정 완료: 명령어 사용자가 아닌, '선택한 유저(user)'를 태그합니다.
     await interaction.response.send_message(f"환영해요 {user.mention} 새로 오신분께 다들 인사 부탁드려요!!")
 
 # ==========================================================
